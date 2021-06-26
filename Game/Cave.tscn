@@ -1,0 +1,97 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://models/bottle/bottle.tscn" type="PackedScene" id=5]
+
+[sub_resource type="ProceduralSky" id=1]
+sky_top_color = Color( 0.862745, 0.952941, 0.972549, 1 )
+sky_horizon_color = Color( 1, 0.992157, 0.87451, 1 )
+ground_bottom_color = Color( 0, 0.392157, 0.423529, 1 )
+ground_horizon_color = Color( 0.576471, 1, 0.921569, 1 )
+sun_latitude = 65.36
+sun_longitude = -43.37
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+ambient_light_color = Color( 1, 1, 1, 1 )
+ambient_light_energy = 1.33
+
+[sub_resource type="Environment" id=3]
+
+[sub_resource type="World" id=4]
+environment = SubResource( 3 )
+
+[node name="Node" type="Node"]
+
+[node name="Spatial" type="Spatial" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Spatial"]
+environment = SubResource( 2 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Spatial"]
+transform = Transform( 0.97736, 0.210308, -0.023201, -0.123249, 0.476759, -0.870351, -0.17198, 0.853506, 0.491885, 0, 38.1479, -58.5419 )
+
+[node name="Camera" type="Camera" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 0.989498, 0.144546, 0, -0.144546, 0.989498, 0, 0.674989, 1.1941 )
+
+[node name="bottle" parent="Spatial" instance=ExtResource( 5 )]
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+anchor_right = 1.0
+margin_bottom = 128.0
+custom_constants/separation = 16
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ViewportContainer" type="ViewportContainer" parent="Control/HBoxContainer"]
+margin_right = 128.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 0 )
+stretch = true
+
+[node name="Viewport" type="Viewport" parent="Control/HBoxContainer/ViewportContainer"]
+size_override_stretch = true
+own_world = true
+world = SubResource( 4 )
+transparent_bg = true
+
+[node name="ViewportContainer2" type="ViewportContainer" parent="Control/HBoxContainer"]
+margin_left = 144.0
+margin_right = 272.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 0 )
+
+[node name="ViewportContainer3" type="ViewportContainer" parent="Control/HBoxContainer"]
+margin_left = 288.0
+margin_right = 416.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 0 )
+
+[node name="ViewportContainer4" type="ViewportContainer" parent="Control/HBoxContainer"]
+margin_left = 432.0
+margin_right = 560.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 0 )
+
+[node name="ViewportContainer5" type="ViewportContainer" parent="Control/HBoxContainer"]
+margin_left = 576.0
+margin_right = 704.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 0 )
+
+[node name="ViewportContainer6" type="ViewportContainer" parent="Control/HBoxContainer"]
+margin_left = 720.0
+margin_right = 848.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 0 )
